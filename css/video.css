@@ -1,0 +1,87 @@
+/* Base layout */
+body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  /* Waiting screen */
+  #waiting-screen {
+    background-color: #f8f9fa; /* light background */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: opacity 0.5s ease;
+    z-index: 20;
+    position: fixed; /* fixed so it overlays the black screen */
+    width: 100%;
+  }
+  
+  /* Black screen with video */
+  #black-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: none; /* hidden initially */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* stack video and button */
+    z-index: 10;
+    pointer-events: auto; /* ensure interaction */
+  }
+  
+  /* Video styling */
+  #result-video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    opacity: 0; /* initial hidden, fade in later */
+    pointer-events: auto; /* ensure clickable */
+    transition: opacity 0.8s ease;
+  }
+  
+  /* Spinner */
+  .spinner-border {
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  /* Escape button */
+  .escape-btn {
+    background: linear-gradient(135deg, #FFB347, #FFCCF9); /* orange → pink */
+    color: white;
+    font-weight: 700;
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px; /* pill shape */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    text-decoration: none;
+    margin-top: 1rem; /* space below video */
+    opacity: 0; /* fade in later */
+    pointer-events: auto; /* ensure clickable */
+    transition: opacity 0.8s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .escape-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  
+  .escape-btn:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* Optional fade-out helper class */
+  .fade-out {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  

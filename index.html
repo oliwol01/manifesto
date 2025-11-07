@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manifesto | Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main class="container py-4 py-md-5 min-vh-100 d-flex align-items-center">
+    <div class="row justify-content-center w-100">
+      <div class="col-12 col-md-10 col-lg-8">
+
+        <!-- start screen -->
+        <section id="start-screen" class="card shadow-sm p-4 text-center">
+          <h1 class="title m-4">Find Your Perfect Degree</h1>
+          <p class="subtitle mb-4">Not sure what to study? <br> Let this quiz guide you to your ideal path.</p>
+          <button id="start-btn" class="btn btn-start rounded-pill px-4">START</button>
+          <img src="img/team-brainstorming.png" alt="Team brainstorming" class="img-fluid">
+        </section>
+
+        <!-- quiz screen -->
+        <section id="quiz-screen" class="card shadow-sm p-4 d-none" aria-live="polite">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div id="progress" class="fw-semibold">Question 1 of 3</div>
+          </div>
+          <h2 id="question-text" class="question-text"></h2>
+          <div id="options" class="d-grid gap-2 my-3" role="group" aria-label="Answer choices"></div>
+
+          <div class="feedback-reserve">
+            <div class="feedback-wrap d-none">
+              <img id="feedback-rest" src="" alt="" class="feedback-rest" />
+            </div>
+          </div>
+
+          <div class="d-flex gap-2 justify-content-end quiz-actions">
+            <button id="next-btn" class="btn btn-primary rounded-pill px-4" disabled aria-label="Next question">
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <script src="js/quiz.js" defer></script>
+</body>
+</html>

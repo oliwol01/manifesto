@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manifesto | Challenge</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #FFB347, #FFCCF9);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #333;
+}
+#main-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+}
+.content {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.content strong {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  width: 100%;
+  text-align: center;
+}
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.content strong.category-heading {
+  color: #88233e;
+}
+.main-heading, .main-paragraph {
+  color: #88233e;
+}
+.pill-label {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.7);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.pill-label:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+input[type="radio"] {
+  display: none;
+}
+input[type="radio"]:checked + .pill-label {
+  background: #FFB347;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+#generate-btn {
+  display: none;
+  background: #FFB347;
+  font-weight: 700;
+  border-radius: 30px;
+  border: none;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#generate-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+#plan-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+#plan-card {
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  max-width: 600px;
+  width: 90%;
+  margin: 0 auto 2rem auto;
+}
+
+</style>
+</head>
+<body>
+
+<div id="main-wrapper">
+  <div class="text-center mb-4">
+    <h2 class="fw-bold main-heading">
+        Challenge yourself for the next month
+    </h2>
+    <p class="main-paragraph">
+        <strong>
+          Not to optimise your CV.<br>
+          Not to improve your “market value.”<br>
+          Just to rediscover what you actually enjoy, outside the economic lens.
+        </strong><br>
+        Pick one from each category below.
+      </p>
+  </div>
+
+<div class="content">
+    <strong class="category-heading">EXPLORE</strong>
+    <img src="img/explore.png" alt="Explore Icon" class="d-block mx-auto" style="max-width: 90px;">
+
+    <div class="radio-group">
+      <input type="radio" name="explore" id="explore1" value="visit a place alone that you’ve never been">
+      <label class="pill-label text-center" for="explore1">Take a solo walk in a part of your city you’ve never been</label>
+  
+      <input type="radio" name="explore" id="explore2" value="try a skill for 20 minutes that has no clear practical outcome">
+      <label class="pill-label text-center" for="explore2">Visit a museum, gallery, or bookstore you’ve never stepped into</label>
+  
+      <input type="radio" name="explore" id="explore3" value="read the intro of a book you didn’t plan to">
+      <label class="pill-label text-center" for="explore3">Spend 20 minutes trying a random creative activity - paint, mix music, or try photography</label>
+    </div>
+  </div>
+  
+
+  <div class="content">
+    <strong class="category-heading">CONNECT</strong>
+    <img src="img/connect.png" alt="Explore Icon" class="d-block mx-auto" style="max-width: 90px;">
+    <div class="radio-group">
+      <input type="radio" name="connect" id="connect1" value="tell a friend about a personal interest">
+      <label class="pill-label text-center" for="connect1">Ask a friend or peer why they chose their future path and what excites them</label>
+
+      <input type="radio" name="connect" id="connect2" value="ask someone what they’d study">
+      <label class="pill-label text-center" for="connect2">Talk to someone completely outside your usual social circle about their passions</label>
+
+      <input type="radio" name="connect" id="connect3" value="join a student event once">
+      <label class="pill-label text-center" for="connect3">Attend a casual event or meetup for something that sparks curiosity, not career gain</label>
+    </div>
+  </div>
+
+  <div class="content">
+    <strong class="category-heading">LEARN</strong>
+    <img src="img/learn.png" alt="Explore Icon" class="d-block mx-auto" style="max-width: 90px;">
+    <div class="radio-group">
+      <input type="radio" name="learn" id="learn1" value="take a free online lecture">
+      <label class="pill-label text-center" for="learn1">Watch a short documentary or video about a topic you’ve always wondered about</label>
+
+      <input type="radio" name="learn" id="learn2" value="try to solve a puzzle/riddle">
+      <label class="pill-label text-center" for="learn2">Listen to a podcast or interview with someone in a field you don’t know much about</label>
+
+      <input type="radio" name="learn" id="learn3" value="watch a talk by an expert">
+      <label class="pill-label text-center" for="learn3">Read an article or a few pages of a subject you’re curious about, with no goal other than exploration</label>
+    </div>
+  </div>
+
+  <button id="generate-btn" class="btn btn-warning fw-bold">GENERATE MY PLAN</button>
+</div>
+
+<div id="plan-container"></div>
+
+<script>
+const generateBtn = document.getElementById('generate-btn');
+
+function checkSelections() {
+  const explore = document.querySelector('input[name="explore"]:checked');
+  const connect = document.querySelector('input[name="connect"]:checked');
+  const learn = document.querySelector('input[name="learn"]:checked');
+  generateBtn.style.display = (explore && connect && learn) ? 'inline-block' : 'none';
+}
+
+document.querySelectorAll('input[type="radio"]').forEach(radio => {
+  radio.addEventListener('change', checkSelections);
+});
+
+generateBtn.addEventListener('click', () => {
+  const explore = document.querySelector('input[name="explore"]:checked').nextElementSibling.textContent;
+  const connect = document.querySelector('input[name="connect"]:checked').nextElementSibling.textContent;
+  const learn = document.querySelector('input[name="learn"]:checked').nextElementSibling.textContent;
+
+  const planContainer = document.getElementById('plan-container');
+  planContainer.innerHTML = `
+    <div id="plan-card" class="text-start">
+  <h4>My Plan for the month:</h4>
+  <ul>
+    <li>${explore}</li>
+    <li>${connect}</li>
+    <li>${learn}</li>
+  </ul>
+</div>
+
+  `;
+  document.getElementById('plan-card').scrollIntoView({ behavior: 'smooth' });
+});
+</script>
+
+</body>
+</html>

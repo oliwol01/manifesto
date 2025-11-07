@@ -1,0 +1,219 @@
+/* Base layout */
+:root {
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --text-blue: #1e40af;
+  --brand-bg: #F3F2EF; /* page background */
+  --brand-title: #0072AE; /* title color */
+  --brand-start: #1482C7; /* start button */
+  --bs-primary: #1482C7; /* align Bootstrap primary to brand */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--brand-bg);
+  color: #000000;
+  font-weight: 700; /* Bold all text */
+  line-height: 1.5;
+}
+
+.card {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid var(--gray-100);
+  border-radius: 12px;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 36px; /* larger title */
+  color: var(--brand-title);
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  font-size: 18px; /* larger heading */
+  color: #000000;
+}
+
+.question-text {
+  margin: 8px 0 16px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.progress { font-weight: 600; }
+
+.quiz-header { display: flex; justify-content: space-between; align-items: center; }
+
+.options {
+  /* spacing handled by Bootstrap d-grid gap utilities */
+}
+
+.actions { display: flex; gap: 12px; }
+
+/* Bootstrap primary overrides to match brand */
+.btn-primary {
+  background-color: var(--brand-start) !important;
+  border-color: var(--brand-start) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0f6ea8 !important;
+  border-color: #0f6ea8 !important;
+}
+.btn-outline-primary {
+  color: var(--brand-start) !important;
+  border-color: var(--brand-start) !important;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary.active,
+.btn-outline-primary:active {
+  color: #ffffff !important;
+  background-color: var(--brand-start) !important;
+  border-color: var(--brand-start) !important;
+}
+
+/* START button branding */
+.btn-start {
+  background-color: var(--brand-start);
+  border-color: var(--brand-start);
+  color: #FFFFFF;
+  font-weight: 700;      /* prevent enforced minimums */
+  display: inline-block; /* avoid full-width stretching */
+  padding: 10px 64px;    /* slightly bigger button */
+  font-size: 1rem;       /* slightly bigger text */
+}
+
+/* Ensure start button stays compact and centered within the start screen */
+#start-screen .btn-start {
+  padding: 10px 64px !important; /* override Bootstrap px-* utilities */
+  max-width: none;       /* remove width cap so padding defines width */
+  margin-left: auto;
+  margin-right: auto;
+}
+.btn-start:hover {
+  background-color: #0f6ea8;
+  border-color: #0f6ea8;
+  color: #FFFFFF;
+}
+
+/* (Removed older start image sizing block to avoid conflicts) */
+
+/* Common spacing and rounding for start and quiz screens */
+#start-screen,
+#quiz-screen {
+  padding: 48px 32px 56px; /* generous inner space */
+  border-radius: 20px;     /* rounded corners */
+  min-height: 60vh;        /* take up more vertical space */
+}
+
+/* Keep image stuck to bottom of the start screen card */
+#start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* push image to bottom reliably */
+  overflow: hidden;               /* clip oversized image */
+}
+#start-screen img {
+  margin-top: 0;                /* no extra gap above */
+  align-self: center;           /* center horizontally */
+  max-width: none;              /* allow beyond intrinsic width */
+  width: 40% !important;        /* apply chosen size and override utilities */
+  height: auto;
+}
+
+@media (min-width: 992px) {
+  #start-screen img {
+    width: 100%;                /* scale up more on desktop */
+  }
+}
+
+#quiz-screen .question-text { margin: 16px 0 24px; }
+#quiz-screen #options { gap: 16px; margin-bottom: 24px; }
+#quiz-screen {
+  display: flex;
+  flex-direction: column;       /* stack content */
+  position: relative;           /* anchor feedback image */
+}
+/* Reserve a fixed whitespace at the bottom when feedback is visible so image
+   never overlaps answer options regardless of viewport height */
+#quiz-screen .feedback-reserve { height: 0; transition: height 200ms ease; }
+#quiz-screen.feedback-visible .feedback-reserve {
+  height: clamp(120px, 22vh, 200px);
+}
+#quiz-screen .quiz-actions { /* pin button row to bottom-right */
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  margin-top: 0;
+}
+#quiz-screen #options { flex-grow: 0; margin-bottom: 16px; } /* keep options compact */
+
+/* Feedback image container and image */
+.feedback-wrap {
+  position: absolute;
+  left: 12px;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-20%, 20%) scale(0.95);
+  transition: opacity 280ms ease, transform 280ms ease;
+}
+.feedback-wrap.show { opacity: 1; transform: translate(0, 0) scale(1); }
+
+.feedback-rest {
+  width: clamp(220px, 32vw, 380px); /* slightly larger default */
+  max-height: 28vh;        /* avoid overlapping options vertically */
+  height: auto;
+}
+
+/* Slightly larger on small/medium screens */
+@media (min-width: 576px) {
+  .feedback-rest { width: clamp(240px, 28vw, 400px); max-height: 30vh; }
+}
+
+/* On large screens, scale relative to card to avoid overlapping options */
+@media (min-width: 768px) {
+  .feedback-rest { width: clamp(280px, 26vw, 440px); max-height: 32vh; }
+}
+
+@media (min-width: 992px) {
+  .feedback-rest {
+    width: clamp(300px, 24vw, 480px);
+    max-height: 34vh;
+  }
+}
+
+/* Reserve space under options when feedback is visible */
+#quiz-screen.feedback-visible #options { margin-bottom: 140px; }
+@media (min-width: 576px) {
+  #quiz-screen.feedback-visible #options { margin-bottom: 160px; }
+}
+@media (min-width: 992px) {
+  #quiz-screen.feedback-visible #options { margin-bottom: 180px; }
+}
+
+/* Maintain a pleasant aspect on larger screens while staying fluid on mobile */
+@media (min-width: 768px) {
+  #start-screen,
+  #quiz-screen {
+    aspect-ratio: 4 / 3;     /* fixed-ish proportion on tablets/desktop */
+  }
+}
+
+/* (Removed quiz image rules; image only on start screen) */
+
+
